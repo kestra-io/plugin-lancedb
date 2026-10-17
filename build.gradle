@@ -49,6 +49,12 @@ dependencies {
     annotationProcessor group: "io.kestra", name: "processor", version: kestraVersion
     compileOnly group: "io.kestra", name: "core", version: kestraVersion
     compileOnly group: "io.kestra", name: "script", version: kestraVersion
+
+    // LanceDB and Apache Arrow
+    implementation "org.lance:lance-core:13.1.0-beta.2"
+    implementation "org.apache.arrow:arrow-vector:18.3.0"
+    implementation "org.apache.arrow:arrow-c-data:18.3.0"
+    implementation "org.apache.arrow:arrow-memory-unsafe:18.3.0"
 }
 
 
@@ -57,6 +63,7 @@ dependencies {
  **********************************************************************************************************************/
 test {
     useJUnitPlatform()
+    jvmArgs('--add-opens=java.base/java.nio=ALL-UNNAMED')
 }
 
 dependencies {
